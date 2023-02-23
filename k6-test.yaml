@@ -2,7 +2,6 @@ apiVersion: k6.io/v1alpha1
 kind: K6
 metadata:
   name: k6-demo
-  namespace: k6-test
 spec:
   parallelism: 4
   script:
