@@ -5,7 +5,7 @@ metadata:
   annotations:
     argocd.argoproj.io/hook-delete-policy: HookSucceeded
 spec:
-  parallelism: 4
+  parallelism: 2
   script:
     configMap:
       name: k6-stress-test
