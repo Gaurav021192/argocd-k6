@@ -13,8 +13,8 @@ data:
     import { group, check, sleep } from 'k6';
     export const options = {
       thresholds: {
-    'group_duration{group:::individualRequests}': ['avg < 200'],
-    'group_duration{group:::batchRequests}': ['avg < 100'],
+    'group_duration{group:::getcrocodiles}': ['avg < 200'],
+    'group_duration{group:::gettestk6}': ['avg < 100'],
     },
       stages: [
         { target: 30, duration: '20s' },
@@ -22,32 +22,18 @@ data:
       ],
     };
     export default function () {
-      # group('getcrocodiles', function () {
-      # const result = http.get('https://test-api.k6.io/public/crocodiles/');
-      # check(result, {
-      #   'http response status code is 200': result.status === 200,
-      # });
-      # });
+      group('getcrocodiles', function () {
+      const result = http.get('https://test-api.k6.io/public/crocodiles/');
+      check(result, {
+        'http response status code is 200': result.status === 200,
+      });
+      });
 
-      # group('gettestk6', function () {
-      # const result1 = http.get('https://test.k6.io');
-      # check(result1, {
-      #   'http response status code is 200': result1.status === 200,
-      # });
-      # });
-
-      group('individualRequests', function () {
-      http.get('https://test-api.k6.io/public/crocodiles/1/');
-      http.get('https://test-api.k6.io/public/crocodiles/2/');
-      http.get('https://test-api.k6.io/public/crocodiles/3/');
-    });
-
-    group('batchRequests', function () {
-      http.batch([
-        ['GET', `https://test-api.k6.io/public/crocodiles/1/`],
-        ['GET', `https://test-api.k6.io/public/crocodiles/2/`],
-        ['GET', `https://test-api.k6.io/public/crocodiles/3/`],
-      ]);
-    });
+      group('gettestk6', function () {
+      const result1 = http.get('https://test.k6.io');
+      check(result1, {
+        'http response status code is 200': result1.status === 200,
+      });
+      });
       sleep(1);
     }
