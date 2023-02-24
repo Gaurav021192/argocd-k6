@@ -26,9 +26,9 @@ data:
       });
 
       group('get testk6', function () {
-      const result = http.get('https://test.k6.io');
-      check(result, {
-        'http response status code is 200': result.status === 200,
+      const result1 = http.get('https://test.k6.io');
+      check(result1, {
+        'http response status code is 200': result1.status === 200,
       });
       });
       
