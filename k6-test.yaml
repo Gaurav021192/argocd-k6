@@ -1,7 +1,7 @@
 apiVersion: k6.io/v1alpha1
 kind: K6
 metadata:
-  name: k6-demo
+  name: k6-sample
   annotations:
     argocd.argoproj.io/hook: PostSync
     argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
@@ -10,5 +10,5 @@ spec:
   parallelism: 2
   script:
     configMap:
-      name: k6-stress-test
-      file: test.js
+      name: crocodile-stress-test
+      file: new.js
