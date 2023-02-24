@@ -13,7 +13,7 @@ data:
     import { check } from 'k6';
     export const options = {
       stages: [
-        { target: 202, duration: '30s' },
+        { target: 50, duration: '30s' },
         { target: 0, duration: '30s' },
       ],
     };
